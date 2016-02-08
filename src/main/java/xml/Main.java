@@ -3,7 +3,7 @@ package xml;
 
 import xml.entity.Shop;
 import xml.converter.XmlConverter;
-import xml.converter.sax.ShopSaxHandler;
+import xml.converter.saxHandler.ShopSaxHandler;
 
 import java.io.File;
 
@@ -23,12 +23,12 @@ public class Main {
             System.out.println(domShop);
 
             //JAXB
-            //unmurshal
+            //unmarshal
             Shop jaxbShop;
-            jaxbShop = xmlConverter.unmurshal(Shop.class, resourcesUtil.getValidNameOfResource("shopSource.xml"));
+            jaxbShop = xmlConverter.unmarshal(Shop.class, resourcesUtil.getValidNameOfResource("shopSource.xml"));
             System.out.println(jaxbShop);
-            //murshal
-            xmlConverter.murshal(jaxbShop, new File("src/main/resources/shopMurshal.xml"));
+            //marshal
+            xmlConverter.marshal(jaxbShop, new File("src/main/resources/shopMurshal.xml"));
         } catch (Exception e) {
             e.printStackTrace();
         }

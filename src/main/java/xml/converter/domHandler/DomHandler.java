@@ -1,4 +1,4 @@
-package xml.converter.dom;
+package xml.converter.domHandler;
 
 
 import org.w3c.dom.Document;

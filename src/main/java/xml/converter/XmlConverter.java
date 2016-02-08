@@ -3,8 +3,8 @@ package xml.converter;
 import com.sun.istack.internal.NotNull;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
-import xml.converter.dom.DomHandler;
-import xml.converter.sax.SAXHandler;
+import xml.converter.domHandler.DomHandler;
+import xml.converter.saxHandler.SAXHandler;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -55,7 +55,7 @@ public class XmlConverter {
         return parse(new FileInputStream(inputFile), domHandler);
     }
 
-    public <E> void murshal(E e, @NotNull OutputStream outputFile)
+    public <E> void marshal(E e, @NotNull OutputStream outputFile)
             throws JAXBException, IllegalAccessException, InstantiationException {
         JAXBContext jaxbContext = JAXBContext.newInstance(e.getClass());
         Marshaller marshaller = jaxbContext.createMarshaller();
@@ -63,20 +63,20 @@ public class XmlConverter {
         marshaller.marshal(e, outputFile);
     }
 
-    public <E> void murshal(E e, @NotNull File outputFile)
+    public <E> void marshal(E e, @NotNull File outputFile)
             throws JAXBException, IllegalAccessException, InstantiationException, FileNotFoundException {
-        murshal(e, new FileOutputStream(outputFile));
+        marshal(e, new FileOutputStream(outputFile));
     }
 
-    public <E> E unmurshal(Class<E> clazz, @NotNull InputStream inputFile)
+    public <E> E unmarshal(Class<E> clazz, @NotNull InputStream inputFile)
             throws JAXBException, IllegalAccessException, InstantiationException {
         JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         return (E) unmarshaller.unmarshal(inputFile);
     }
 
-    public <E> void unmurshal(Class<E> clazz, @NotNull File inputFile)
+    public <E> void unmarshal(Class<E> clazz, @NotNull File inputFile)
             throws JAXBException, IllegalAccessException, InstantiationException, FileNotFoundException {
-        unmurshal(clazz, new FileInputStream(inputFile));
+        unmarshal(clazz, new FileInputStream(inputFile));
     }
 }
