@@ -1,6 +1,5 @@
 package xml.converter;
 
-import com.sun.istack.internal.NotNull;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 import xml.converter.domHandler.DomHandler;
@@ -24,7 +23,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class XmlConverter {
-    public <E> E parse(@NotNull InputStream inputFile, SAXHandler<E> saxHandler)
+    public <E> E parse(InputStream inputFile, SAXHandler<E> saxHandler)
             throws ParserConfigurationException, SAXException, IOException {
         SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
         saxHandler.setPropertyToFactory(saxParserFactory);
@@ -34,12 +33,12 @@ public class XmlConverter {
         return saxHandler.getEntity();
     }
 
-    public <E> E parse(@NotNull File inputFile, SAXHandler<E> saxHandler)
+    public <E> E parse(File inputFile, SAXHandler<E> saxHandler)
             throws ParserConfigurationException, SAXException, IOException {
         return parse(new FileInputStream(inputFile), saxHandler);
     }
 
-    public <E> E parse(@NotNull InputStream inputFile, DomHandler<E> domHandler)
+    public <E> E parse(InputStream inputFile, DomHandler<E> domHandler)
             throws ParserConfigurationException, SAXException, IOException {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         domHandler.setPropertyToFactory(documentBuilderFactory);
@@ -50,12 +49,12 @@ public class XmlConverter {
         return domHandler.handle(document);
     }
 
-    public <E> E parse(@NotNull File inputFile, DomHandler<E> domHandler)
+    public <E> E parse(File inputFile, DomHandler<E> domHandler)
             throws ParserConfigurationException, SAXException, IOException {
         return parse(new FileInputStream(inputFile), domHandler);
     }
 
-    public <E> void marshal(E e, @NotNull OutputStream outputFile)
+    public <E> void marshal(E e, OutputStream outputFile)
             throws JAXBException, IllegalAccessException, InstantiationException {
         JAXBContext jaxbContext = JAXBContext.newInstance(e.getClass());
         Marshaller marshaller = jaxbContext.createMarshaller();
@@ -63,19 +62,19 @@ public class XmlConverter {
         marshaller.marshal(e, outputFile);
     }
 
-    public <E> void marshal(E e, @NotNull File outputFile)
+    public <E> void marshal(E e, File outputFile)
             throws JAXBException, IllegalAccessException, InstantiationException, FileNotFoundException {
         marshal(e, new FileOutputStream(outputFile));
     }
 
-    public <E> E unmarshal(Class<E> clazz, @NotNull InputStream inputFile)
+    public <E> E unmarshal(Class<E> clazz, InputStream inputFile)
             throws JAXBException, IllegalAccessException, InstantiationException {
         JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-        return (E) unmarshaller.unmarshal(inputFile);
+        return clazz.cast(unmarshaller.unmarshal(inputFile));
     }
 
-    public <E> void unmarshal(Class<E> clazz, @NotNull File inputFile)
+    public <E> void unmarshal(Class<E> clazz, File inputFile)
             throws JAXBException, IllegalAccessException, InstantiationException, FileNotFoundException {
         unmarshal(clazz, new FileInputStream(inputFile));
     }
