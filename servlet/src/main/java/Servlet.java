@@ -12,21 +12,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Properties;
 import java.util.UUID;
 
 @WebServlet(name = "Servlet", urlPatterns = "/hello")
 @MultipartConfig(maxFileSize = (1024 * 1024 * 10))
 public class Servlet extends HttpServlet {
-    ResourcesUtil resourcesUtil = new ResourcesUtil();
-    Properties property = resourcesUtil.loadPropertiesFromResources(new Properties(), "config.properties");
+    protected ResourcesUtil resourcesUtil = new ResourcesUtil();
+    protected Properties property = resourcesUtil.loadPropertiesFromResources(new Properties(), "config.properties");
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Part filePart = request.getPart("file");
-        if (filePart!=null) {
+        if (filePart != null) {
             String fileName = filePart.getSubmittedFileName();
             String fileExtension = getExtensionOfFileByName(fileName);
             try (InputStream inputStream = filePart.getInputStream();
@@ -42,21 +41,20 @@ public class Servlet extends HttpServlet {
         return "." + arr[arr.length - 1];
     }
 
-    private File getFileForImage(String fileExtension) throws IOException {
-        String pathname = getDirectoryOfImage() + File.separator + UUID.randomUUID().toString() + fileExtension;
+    private File getFileForImage(String fileExtension) {
+        String pathname = getDirectoryOfImage() + File.separator + UUID.randomUUID() + fileExtension;
         return new File(pathname);
     }
 
-    private String getDirectoryOfImage() {
+    protected String getDirectoryOfImage() {
         return property.getProperty("upload.location");
     }
 
-
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         File directory = new File(getDirectoryOfImage());
-        List<File> fileList = Arrays.asList(directory.listFiles());
-        request.setAttribute("fileList", fileList);
+        request.setAttribute("fileList", directory.list());
         request.getRequestDispatcher("myPage.jsp").forward(request, response);
     }
 }

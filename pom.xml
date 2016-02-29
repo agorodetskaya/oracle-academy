@@ -12,7 +12,7 @@
     <modules>
         <module>xml-parser</module>
         <module>servlet</module>
-        <module>spring-mvs</module>
+        <module>spring-mvc</module>
     </modules>
 
     <dependencies>

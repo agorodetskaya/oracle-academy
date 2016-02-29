@@ -7,8 +7,8 @@ public class ResourcesUtil {
         return getClass().getClassLoader().getResourceAsStream(fileName);
     }
 
-    public Properties loadPropertiesFromResources (Properties properties, String fileName){
-        try (InputStream inputStream = getInputStreamOfResource(fileName)){
+    public Properties loadPropertiesFromResources(Properties properties, String fileName) {
+        try (InputStream inputStream = getInputStreamOfResource(fileName)) {
             properties.load(inputStream);
         } catch (IOException e) {
             e.printStackTrace();

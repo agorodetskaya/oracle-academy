@@ -1,19 +1,30 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+         pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Add user</title>
 </head>
 <body>
-<form action="..." method="...">
-	First name : <input type="text" name="...">
-	Last name : <input type="text" name="...">
-	Age : <input type="text" name="...">
-	Role : <select>...</select>
-	<input type="submit" value="Add"> 
-</form>
-
+<form:form action="add" method="get" modelAttribute="user">
+    <label>First name:
+        <form:input path="firstName"/>
+    </label>
+    <label>Last name:
+        <form:input path="lastName"/>
+    </label>
+    <label>Age:
+        <form:input path="age"/>
+    </label>
+    <label> Role :
+        <form:select path="role">
+            <form:option value="USER" label="user"/>
+            <form:option value="ADMIN" label="admin"/>
+        </form:select>
+    </label>
+    <input type="submit" value="Add">
+</form:form>
 </body>
 </html>
