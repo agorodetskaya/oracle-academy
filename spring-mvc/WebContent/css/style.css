@@ -1,0 +1,112 @@
+body {
+    background-color: white;
+}
+
+#root {
+    background-color: rgba(252, 252, 252, 1);
+    border: 1px solid rgba(122, 122, 122, 0.3);
+    padding: 10px;
+    width: 500px;
+    height: 305px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    margin: -200px auto auto -250px;
+    box-shadow: 0.4em 0.4em 3px rgba(122, 122, 122, 0.3);
+}
+
+.text {
+    float: left;
+    width: 120px;
+    text-align: right;
+    padding-right: 8px;
+    overflow: hidden;
+    font-size: 17pt;
+    font-family: "Calibri Light", sans-serif;
+}
+
+.inputDiv {
+    margin: 16px 1px;
+}
+
+.bigInput {
+    width: 350px;
+}
+
+.button, .smallInput {
+    width: 146px;
+}
+
+.bigInput, .smallInput, .button {
+    font-size: 17pt;
+    font-family: "Calibri Light", sans-serif;
+}
+
+#submit {
+    padding-left: 128px;
+}
+
+.button {
+    background: #ff5c5c;
+    color: white;
+    text-align: center;
+    border: 0;
+    cursor: pointer;
+}
+
+.button:active {
+    border: 0;
+    outline: none;
+    box-shadow: 0 13px 30px 0 rgba(0, 0, 0, 0.3);
+}
+
+.select {
+    height: 34px;
+    width: 150px;
+}
+
+select:required:invalid {
+    color: gray;
+    font-size: 15pt;
+}
+
+option[value=""][disabled] {
+    display: none;
+}
+
+option {
+    color: black;
+    font-size: 15pt;
+}
+
+.href {
+    padding: 3px 30px;
+    text-align: center;
+    border: 0;
+    background: #ff5c5c;
+}
+
+.href:active {
+    border: 0;
+    outline: none;
+    color: white;
+    box-shadow: 0 13px 30px 0 rgba(0, 0, 0, 0.3);
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 17pt;
+    font-family: "Calibri Light", sans-serif;
+}
+
+.add {
+    padding: 25px 40px;
+}
+
+.delete {
+    color: black;
+    font-size: 10pt;
+}
+
+

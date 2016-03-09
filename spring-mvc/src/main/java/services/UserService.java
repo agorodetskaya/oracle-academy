@@ -16,9 +16,21 @@ public class UserService {
         return userDao.getAll();
     }
 
-    public void printUser (User user){
-        System.out.println(user.getFirstName() + " " + user.getRole());
+    public User createUser (User user){
+        return userDao.create(user);
     }
 
+    public User getUserById (Long id) {
+        return userDao.getById(id);
+    }
+
+    public User updateUser (User user) {
+        return userDao.update(user);
+    }
+
+    public boolean deleteUser (Long id) {
+        User user = userDao.getById(id);
+        return userDao.delete(user);
+    }
 
 }
