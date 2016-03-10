@@ -14,6 +14,7 @@
     <form:form action="add" method="post" modelAttribute="user">
         <div class="inputDiv">
             <div class="text"><label>First name:</label></div>
+            <%--????? ??????????? ? ??????????--%>
             <form:input class="bigInput" path="firstName" required="true" maxlength="100"
                         pattern="[a-zA-Z?-??-?\s-]*"
                         title="Enter the first name using russian or english letters. Allowed to use a hyphen and a space"/>

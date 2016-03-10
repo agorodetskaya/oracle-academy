@@ -31,7 +31,7 @@
             <c:forEach var="user" items="${users}">
                 <tr>
                     <form:form modelAttribute="user" method="post" action="update">
-                        <td><form:input path="id" value="${user.id}" disabled="true" required="true"/></td>
+                        <td><form:input path="id" value="${user.id}" readonly="true" required="true"/></td>
                         <td><form:input path="firstName" value="${user.firstName}" required="true" maxlength="100"
                                         pattern="[a-zA-Z?-??-?\s-]*"
                                         title="Enter the first name using russian or english letters. Allowed to use a hyphen and a space"/></td>
