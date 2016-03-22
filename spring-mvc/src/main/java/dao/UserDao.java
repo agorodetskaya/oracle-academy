@@ -2,7 +2,7 @@ package dao;
 
 import model.User;
 
-import java.util.List;
+import java.util.Collection;
 
 
 public interface UserDao {
@@ -15,6 +15,6 @@ public interface UserDao {
 
     User update(User user);
 
-    List<User> getAll();
+    Collection<User> getAll();
 
 }

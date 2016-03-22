@@ -11,7 +11,7 @@ import java.nio.file.Files;
 import java.util.Properties;
 
 
-@WebServlet(name = "ImageServlet", urlPatterns = "/hello/img")
+@WebServlet(name = "ImageServlet", urlPatterns = "/img")
 @MultipartConfig
 public class ImageServlet extends HttpServlet {
     protected ResourcesUtil resourcesUtil = new ResourcesUtil();

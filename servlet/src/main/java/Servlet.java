@@ -15,7 +15,7 @@ import java.io.OutputStream;
 import java.util.Properties;
 import java.util.UUID;
 
-@WebServlet(name = "Servlet", urlPatterns = "/hello")
+@WebServlet(name = "Servlet", urlPatterns = "/")
 @MultipartConfig(maxFileSize = (1024 * 1024 * 10))
 public class Servlet extends HttpServlet {
     protected ResourcesUtil resourcesUtil = new ResourcesUtil();
@@ -37,7 +37,7 @@ public class Servlet extends HttpServlet {
     }
 
     private String getExtensionOfFileByName(String fileName) {
-        String[] arr = fileName.split("[.]+");
+        String[] arr = fileName.split("\\.+");
         return "." + arr[arr.length - 1];
     }
 

@@ -50,14 +50,13 @@ body {
     background: #ff5c5c;
     color: white;
     text-align: center;
-    border: 0;
+    border: none;
     cursor: pointer;
 }
 
 .button:active {
     border: 0;
     outline: none;
-    box-shadow: 0 13px 30px 0 rgba(0, 0, 0, 0.3);
 }
 
 .select {
@@ -82,26 +81,24 @@ option {
 .href {
     padding: 3px 30px;
     text-align: center;
-    border: 0;
+    border: none;
     background: #ff5c5c;
-}
-
-.href:active {
-    border: 0;
-    outline: none;
-    color: white;
-    box-shadow: 0 13px 30px 0 rgba(0, 0, 0, 0.3);
-}
-
-a {
+    box-shadow: 0.4em 0.4em 3px rgba(122, 122, 122, 0.3);
     text-decoration: none;
     color: white;
     font-size: 17pt;
     font-family: "Calibri Light", sans-serif;
 }
 
+.href:active {
+    border: none;
+    outline: none;
+    color: white;
+    box-shadow: 0 13px 30px 0 rgba(0, 0, 0, 0.3);
+}
+
 .add {
-    padding: 25px 40px;
+    padding: 45px 40px;
 }
 
 .delete {
@@ -109,4 +106,73 @@ a {
     font-size: 10pt;
 }
 
+.table-users {
+    background-color: rgba(252, 252, 252, 1);
+    border: 1px solid rgba(122, 122, 122, 0.3);
+    margin: auto;
+    box-shadow: 0.4em 0.4em 3px rgba(122, 122, 122, 0.3);
+    font-size: 16pt;
+    font-family: "Calibri Light", sans-serif;
+    padding: 2px 10px;
+}
 
+.input {
+    font-size: 14pt;
+    font-family: "Calibri Light", sans-serif;
+    padding: 2px 5px;
+}
+
+.tr-users {
+    padding: 5px 2px;
+}
+
+.thead-users {
+    padding: 7px 2px;
+}
+
+.input-id {
+    width: 35px;
+    border: none;
+    text-align: center;
+    background-color: rgba(252, 252, 252, 1);
+}
+
+.submit:active {
+    background: #ff5c5c;
+    box-shadow: 0 13px 30px 0 rgba(0, 0, 0, 0.3);
+}
+
+.submit {
+    background: #ff5c5c;
+    color: white;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    height: 30px;
+    width: 70px;
+}
+
+.empty-list {
+    font-size: 19pt;
+    font-family: "Calibri Light", sans-serif;
+    color: rgba(119, 119, 119, 1);
+}
+
+.error-massage {
+    font-size: 45pt;
+    font-family: "Calibri Light", sans-serif;
+    color: rgba(119, 119, 119, 1);
+    padding-top: 10%;
+    padding-bottom: 15px;
+}
+
+.error-href {
+    color: #ff5c5c;
+    font-size: 20pt;
+    font-family: "Calibri Light", sans-serif;
+    border: none;
+}
+
+.div-error-href {
+    text-align: center;
+}

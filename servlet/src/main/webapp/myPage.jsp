@@ -4,17 +4,21 @@
 <html>
 <head>
     <title>My Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-<form method="post" action="hello" enctype="multipart/form-data" id="form">
-    <p>Выберите картинку: </p>
-    <input type="file" name="file" id="file" accept="image/jpeg,image/png,image/gif,image/jpg"/>
-    <input type="submit" value="Submit" name="upload" id="upload"/>
-</form>
-<h1 align="center">Image gallery</h1>
-<br/>
-<c:forEach var="img" items="${fileList}">
-    <img src="hello/img?name=${img}" width="30%" height="30%" border="10%">
-</c:forEach>
+<div align="center">
+    <form method="post" action="" enctype="multipart/form-data" id="form">
+        <label>Выберите картинку: </label>
+        <input type="file" name="file" id="file" accept="image/jpeg,image/png,image/gif,image/jpg"/>
+        <input type="submit" value="Подтвердить"/>
+    </form>
+</div>
+<c:if test="${not empty fileList}">
+    <h1 align="center">Галлерея:</h1>
+    <c:forEach var="image" items="${fileList}">
+        <p align="center"><img src="<c:url value="img?name=${image}"/>"/></p>
+    </c:forEach>
+</c:if>
 </body>
 </html>

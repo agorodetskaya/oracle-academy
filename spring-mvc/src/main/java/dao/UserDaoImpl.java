@@ -4,13 +4,16 @@ import model.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
 public class UserDaoImpl implements UserDao {
-    private ConcurrentHashMap<Long, User> users = new ConcurrentHashMap<>();
+    private ConcurrentMap<Long, User> users = new ConcurrentHashMap<>();
     private AtomicLong nextId = new AtomicLong(0);
 
     @Override
@@ -21,7 +24,7 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
-    private synchronized long getNewId() {
+    private long getNewId() {
         return nextId.getAndIncrement();
     }
 
@@ -31,10 +34,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> getAll() {
-        List<User> list = new ArrayList<>();
-        users.forEach((Long id, User user) -> list.add(user));
-        return list;
+    public Collection<User> getAll() {
+        return users.values();
     }
 
     @Override

@@ -2,10 +2,12 @@ package xml;
 
 
 import xml.converter.XmlConverter;
+import xml.converter.domHandler.ShopDomHandler;
 import xml.converter.saxHandler.ShopSaxHandler;
 import xml.entity.Shop;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class Main {
@@ -15,20 +17,19 @@ public class Main {
         try {
             //SAX
             Shop saxShop;
-            saxShop =
-                    xmlConverter.parse(resourcesUtil.getInputStreamOfResource("shopSource.xml"), new ShopSaxHandler());
+            InputStream inputStreamOfResource = resourcesUtil.getInputStreamOfResource("shopSource.xml");
+            saxShop = xmlConverter.parse(inputStreamOfResource, new ShopSaxHandler());
             System.out.println(saxShop);
 
             //DOM
             Shop domShop;
-            domShop =
-                    xmlConverter.parse(resourcesUtil.getInputStreamOfResource("shopSource.xml"), new ShopSaxHandler());
+            domShop = xmlConverter.parse(inputStreamOfResource, new ShopDomHandler());
             System.out.println(domShop);
 
             //JAXB
             //unmarshal
             Shop jaxbShop;
-            jaxbShop = xmlConverter.unmarshal(Shop.class, resourcesUtil.getInputStreamOfResource("shopSource.xml"));
+            jaxbShop = xmlConverter.unmarshal(Shop.class, inputStreamOfResource);
             System.out.println(jaxbShop);
             //marshal
             String marshalXmlLocation = resourcesUtil.loadPropertiesFromResources(new Properties(), "config.properties")
